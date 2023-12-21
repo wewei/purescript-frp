@@ -1,4 +1,4 @@
-module Reactive.Vow where
+module Reactive.Guarantee where
 
 import Prelude
 
