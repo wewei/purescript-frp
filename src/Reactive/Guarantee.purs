@@ -24,8 +24,8 @@ runGuarantee (Guarantee eff) = eff
 
 makeGuarantee :: forall a. Effect (Handler (Handler a)) -> Guarantee a
 makeGuarantee eff = Guarantee do
-    refHds <- new (Nil :: List (Handler a))
-    refVal <- new (Nothing :: Maybe a)
+    refHds <- new Nil
+    refVal <- new Nothing
     hhd    <- eff
     hhd $ \val -> read refVal >>=
         case _ of
@@ -61,8 +61,8 @@ instance Plus Guarantee where
 
 both :: forall a b. Guarantee a -> Guarantee b -> Guarantee (Tuple a b)
 both grtA grtB = makeGuarantee $ do
-    refA <- new (Nothing :: Maybe a)
-    refB <- new (Nothing :: Maybe b)
+    refA <- new Nothing
+    refB <- new Nothing
     hhdA <- runGuarantee grtA
     hhdB <- runGuarantee grtB
     pure $ \hdl -> do

@@ -16,13 +16,14 @@ to generate this file without the comments in this block.
   , "console"
   , "control"
   , "effect"
+  , "exceptions"
   , "foldable-traversable"
   , "lists"
   , "maybe"
-  , "pmock"
   , "prelude"
   , "refs"
   , "spec"
+  , "transformers"
   , "tuples"
   ]
 , packages = ./packages.dhall
